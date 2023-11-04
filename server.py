@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Google Cloud Vision APIキー
-api_key = 'API_KEY'
+api_key = 'AIzaSyAKiq2q3SF3XtA2pyxsWVVPBxlyK92DnoU'
 
 # アップロードされた画像を保存するフォルダを設定
 UPLOAD_FOLDER = 'C:/python_portfolio/mooooosic'
@@ -53,9 +53,6 @@ def detect_emo():
         #captured_image = data.get('capturedImage')
 
         # ここでcapturedImageを使用して感情を判定する処理を実行
-        #encoded_image = base64.b64encode(captured_image).decode('utf-8')
-        #captured_image_binary = base64.b64decode(image_data)
-        #print(captured_image_binary)
         request_data = {
                 "requests": [
                     {
@@ -118,7 +115,6 @@ def get_random_data():
     print(request)
     request_data = request.get_json()
     emotion = request_data.get('emotion_type')
-    #emotion = request.args.get('emotion_type')  # リクエストパラメータからCSVファイルのパスを取得
     num_elements = 10  # 取得したいランダムな要素の数
     random_elements = get_random_elements(f"mooooosic/{emotion}.csv", num_elements)
     return jsonify(random_elements)
